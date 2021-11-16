@@ -1,4 +1,5 @@
 import { readFile, writeFile } from "fs/promises";
+import fs from "fs";
 
 let template = await readFile(new URL("text.txt", import.meta.url), "utf-8");
 
@@ -17,3 +18,12 @@ if (template === "hello") {
 } else {
   console.log(false, "file do not exist");
 }
+
+const path = "./index.html";
+fs.exists(path, function (isExist) {
+  let checkFile;
+  checkFile = isExist
+    ? console.log("File exist here", path)
+    : console.log("File does not exist", path);
+  // console.log(checkFile);
+});
